@@ -4,14 +4,14 @@ require('../config/passport')(passport);
 var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
-var Category = require('../models/Category');
+var Post = require('../models/Post');
 
 router.get('/', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     var token = getToken(req.headers);
     if(token) {
-        Category.find(function(err, categories) {
+        Post.find(function(err, posts) {
             if(err) return next(err);
-            res.json(categories);
+            res.json(posts);
         });
     } else {
         return res.status(403).send({ success: false, msg: 'Unauthorized.' });
@@ -21,9 +21,9 @@ router.get('/', passport.authenticate('jwt', { session: false }), function(req, 
 router.get('/:id', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     var token = getToken(req.headers);
     if(token) {
-        Category.findById(req.params.id, function(err, category) {
+        Post.findById(req.params.id, function(err, post) {
             if(err) return next(err);
-            res.json(category);
+            res.json(post);
         });
     } else {
         return res.status(403).send({ success: false, msg: 'Unauthorized.' });
@@ -33,9 +33,9 @@ router.get('/:id', passport.authenticate('jwt', { session: false }), function(re
 router.post('/', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     var token = getToken(req.headers);
     if(token) {
-        Category.create(req.body, function(err, category) {
+        Post.create(req.body, function(err, post) {
             if(err) return next(err);
-            res.json(category);
+            res.json(post);
         });
     } else {
         return res.status(403).send({ success: false, msg: 'Unauthorized.' });
@@ -45,9 +45,9 @@ router.post('/', passport.authenticate('jwt', { session: false }), function(req,
 router.post('/:id', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     var token = getToken(req.headers);
     if(token) {
-        Category.findByIdAndUpdate(req.params.id, req.body, function(err, category) {
+        Post.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
             if(err) return next(err);
-            res.json(category);
+            res.json(post);
         });
     } else {
         return res.status(403).send({ success: false, msg: 'Unauthorized.' });
@@ -57,9 +57,9 @@ router.post('/:id', passport.authenticate('jwt', { session: false }), function(r
 router.delete('/:id', passport.authenticate('jwt', { session: false }), function(req, res, next) {
     var token = getToken(req.headers);
     if(token) {
-        Category.findByIdAndRemove(req.params.id, req.body, function(err, category) {
+        Post.findByIdAndRemove(req.params.id, req.body, function(err, post) {
             if(err) return next(err);
-            res.json(category);
+            res.json(post);
         });
     } else {
         return res.status(403).send({ success: false, msg: 'Unauthorized.' });
