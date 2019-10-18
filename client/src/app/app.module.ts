@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
+import { MatInputModule, MatPaginatorModule, MatSortModule, MatTableModule, MatIconModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule } from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,7 @@ import { PostComponent } from './post/post.component';
 import { PostDetailsComponent } from './post/post-details/post-details.component';
 import { PostAddComponent } from './post/post-add/post-add.component';
 import { PostEditComponent } from './post/post-edit/post-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,21 @@ import { PostEditComponent } from './post/post-edit/post-edit.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     {
