@@ -6,7 +6,7 @@ var settings = require('../config/settings');
 
 module.exports = function(passport) {
     var opts = {};
-    otps.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
+    opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
     opts.secretOrKey = settings.secret;
     passport.use(new JWtStrategy(opts, function(jwt_payload, done) {
         User.findOne({ id: jwt_payload.id }, function(err, user) {
