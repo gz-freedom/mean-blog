@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { Post } from "../post/post";
+import { HomeService } from "../home.service";
 
 @Component({
   selector: 'app-details',
@@ -6,10 +9,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
+  post: Post = {
+    category: '',
+    id: '',
+    postTitle: '',
+    postAuthor: '',
+    postDesc: '',
+    postContent: '',
+    postReference: '',
+    postImgUrl: '',
+    created: null,
+    updated: null
+  };
+  isLoadingResults = true;
 
-  constructor() { }
+  constructor(private api: HomeService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.getPostDetails(this.route.snapshot.params.id);
+  }
+
+  getPostDetails(id: any) {
+    this.api.getPost(id).subscribe(data => {
+      this.post = data;
+      this.isLoadingResults = false;
+    });
   }
 
 }

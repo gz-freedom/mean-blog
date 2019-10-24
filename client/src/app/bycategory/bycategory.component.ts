@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { Post } from "../post/post";
+import { HomeService } from "../home.service";
 
 @Component({
   selector: 'app-bycategory',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bycategory.component.scss']
 })
 export class BycategoryComponent implements OnInit {
+  posts: Post[] = [];
+  isLoadingResults = true;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private api: HomeService) { }
 
   ngOnInit() {
+    this.getPostsByCategory(this.route.snapshot.params.id);
+  }
+
+  getPostsByCategory(id: any) {
+    this.api.getPostsByCategory(id).subscribe(res => {
+      this.posts = res;
+      this.isLoadingResults = false;
+    }, err => {
+      console.log(err);
+      this.isLoadingResults = false;
+    });
   }
 
 }

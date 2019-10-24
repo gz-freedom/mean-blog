@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
-import { MatInputModule, MatPaginatorModule, MatSortModule, MatTableModule, MatIconModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule } from "@angular/material";
+import { MatInputModule, MatPaginatorModule, MatSortModule, MatTableModule, MatIconModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatMenuModule, MatToolbarModule, MatProgressSpinnerModule, MatGridListModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CKEditorModule } from "ckeditor4-angular";
 import { MatContenteditableModule } from "mat-contenteditable";
@@ -61,6 +61,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatMenuModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
+    MatGridListModule,
     CKEditorModule,
     MatContenteditableModule
   ],
