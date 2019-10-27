@@ -5,6 +5,7 @@ var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
+var config = require('../config/settings');
 
 router.post('/register', function(req, res) {
     if(!req.body.username || !req.body.password) {

@@ -12,6 +12,7 @@ var passport = require('passport');
 var auth = require('./routes/auth');
 var category = require('./routes/category');
 var post = require('./routes/post');
+var cors = require('cors');
 
 mongoose.connect('mongodb://localhost/blog-cms', {
     promiseLibrary: require('bluebird'),
@@ -23,6 +24,7 @@ mongoose.connect('mongodb://localhost/blog-cms', {
 
 var app = express();
 
+app.use(cors());
 app.use(passport.initialize());
 app.use(logger('dev'));
 app.use(express.json());
