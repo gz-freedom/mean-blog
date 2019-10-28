@@ -15,7 +15,7 @@ router.get('/category', function(req, res, next) {
   });
 });
 
-router.get('/catogory/:id', function(req, res, next) {
+router.get('/bycategory/:id', function(req, res, next) {
   Post.find({ category: req.params.id }, function(err, posts) {
     if(err) return next(err);
     res.json(posts);

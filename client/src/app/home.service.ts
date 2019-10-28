@@ -30,7 +30,7 @@ export class HomeService {
   }
 
   getPostsByCategory(id: any): Observable<Post []> {
-    return this.http.get<Post[]>(apiUrl + 'byCategory/' + id)
+    return this.http.get<Post[]>(apiUrl + 'bycategory/' + id)
       .pipe(
         tap(_ => this.log('fetched Posts')),
         catchError(this.handleError('getPosts', []))

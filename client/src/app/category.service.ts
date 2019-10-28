@@ -32,7 +32,7 @@ export class CategoryService {
 
   addCategory(category: Category): Observable<Category> {
     return this.http.post<Category>(apiUrl, category).pipe(
-      tap((prod: Category) => this.log(`added category w/ id=${category.id}`)),
+      tap((prod: Category) => this.log('added category')),
       catchError(this.handleError<Category>('addCategory'))
     );
   }
