@@ -22,3 +22,5 @@
 + routes目录下auth.js出现config is not defined
 
 解决方法：顶部添加var config = require('../config/settings');
+
+## 创建新分支bootstrap(2019-10-28)
